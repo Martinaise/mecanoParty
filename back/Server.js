@@ -8,6 +8,9 @@ const vehiculeRoutes = require("./router/vehiculeRouter.js");
 const horaireOuvertureRoutes = require("./router/horaireouvertureRouter.js");
 const middleWare = require("./middlewaves/middlewaresToken.js");
 
+const adminRoutes = require("./router/adminRoutes.js");
+const employeRoutes = require("./router/EmployeRoutes.js");
+
 // on permet au front et au back de communiquer enssemble
 const cors = require("cors");
 // initialisation de app pour utiliser les méthodes sur
@@ -36,6 +39,9 @@ app.use(express.json());
 
 app.use(express.urlencoded({ extended: false }));
 
+//admin routes
+app.use("/api/admin", adminRoutes);
+app.use("/api/client", employeRoutes);
 // use associe une route de base a un emsemble de route
 app.use("/api/user", userRoutes);
 app.use("/api/service", serviceRoutes);

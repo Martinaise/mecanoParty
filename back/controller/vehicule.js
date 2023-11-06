@@ -266,3 +266,21 @@ module.exports.getVheicules = async (req, res) => {
   }
 };
 //fin  de récupération de  tous  l'horaire d'ouverture
+// barre de recherche
+module.exports.searchVehicule = async (req, res) => {
+  const { prixMin, kilometrage, annee_fabrication_vehicule, prixMax } =
+    req.params;
+  let query = `SELECT * FROM voitures WHERE prix BETWEEN ? AND ? AND kilometrage <= ? AND annee_fabrication_vehicule >= ? `;
+  const values = [prixMin, prixMax, kilometrage, annee_fabrication_vehicule];
+
+  try {
+    const result = db.executeQuery(query, values);
+    res.status(200).json({
+      result,
+    });
+  } catch (error) {
+    res.status(404).json({
+      error,
+    });
+  }
+};
