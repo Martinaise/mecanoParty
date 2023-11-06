@@ -8,20 +8,28 @@ const horaireOuverture = require("../controller/horaireOuverture");
 
 //user
 router.post("/register", adminmiddleweare, authUser.register);
-router.delete("/:id", adminmiddleweare, user.deleteUser);
-router.get("/", adminmiddleweare, user.getUsers);
-router.put("/:id", adminmiddleweare, user.putUser);
+router.delete("/user/:id", adminmiddleweare, user.deleteUser);
+router.get("/user/", adminmiddleweare, user.getUsers);
+router.put("/user/:id", adminmiddleweare, user.putUser);
 //service
-router.post("/", adminmiddleweare, service.createService);
-router.put("/:id", adminmiddleweare, service.putService);
-router.delete("/:id", adminmiddleweare, service.deleteService);
+router.post("/service/", adminmiddleweare, service.createService);
+router.put("/service/:id", adminmiddleweare, service.putService);
+router.delete("/service/:id", adminmiddleweare, service.deleteService);
 
 //horaire d'ouverture
 
-router.post("/", adminmiddleweare, horaireOuverture.createHoraireOuverture);
-router.put("/:id", adminmiddleweare, horaireOuverture.putHoraireOuverture);
+router.post(
+  "/horaire/",
+  adminmiddleweare,
+  horaireOuverture.createHoraireOuverture
+);
+router.put(
+  "/horaire/:id",
+  adminmiddleweare,
+  horaireOuverture.putHoraireOuverture
+);
 router.delete(
-  "/:id",
+  "/horaire/:id",
   adminmiddleweare,
   horaireOuverture.deleteHoraireOuverture
 );

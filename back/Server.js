@@ -40,8 +40,8 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 
 //admin routes
-app.use("/api/admin", adminRoutes);
-app.use("/api/client", employeRoutes);
+app.use("/api/admin", middleWare.checkAuth, adminRoutes);
+app.use("/api/client", middleWare.checkAuth, employeRoutes);
 // use associe une route de base a un emsemble de route
 app.use("/api/user", userRoutes);
 app.use("/api/service", serviceRoutes);
