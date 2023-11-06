@@ -6,6 +6,7 @@ const serviceRoutes = require("./router/serviceRouter.js");
 const avisRoutes = require("./router/avisRouter.js");
 const vehiculeRoutes = require("./router/vehiculeRouter.js");
 const horaireOuvertureRoutes = require("./router/horaireouvertureRouter.js");
+const middleWare = require("./middlewaves/middlewaresToken.js");
 
 // on permet au front et au back de communiquer enssemble
 const cors = require("cors");
@@ -38,7 +39,8 @@ app.use(express.urlencoded({ extended: false }));
 // use associe une route de base a un emsemble de route
 app.use("/api/user", userRoutes);
 app.use("/api/service", serviceRoutes);
-app.use("/api/avis", avisRoutes);
+// séécurisation de la route avis avec le middleware
+app.use("/api/avis", middleWare.checkAuth, avisRoutes);
 app.use("/api/horaireOuverture", horaireOuvertureRoutes);
 app.use("/api/vehicule", vehiculeRoutes);
 
