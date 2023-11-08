@@ -1,0 +1,375 @@
+@import url("https://fonts.googleapis.com/css2?family=Cherry+Bomb+One&family=Chilanka&family=Inter:wght@300&display=swap");
+
+/*Header*/
+.header {
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 960px;
+  z-index: -1;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center center;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  animation: backgroundChange 15s linear infinite; /* Change l'arrière-plan toutes les 15 secondes */
+}
+/* Créez une animation nommée 'backgroundChange' */
+@keyframes backgroundChange {
+  0% {
+    background-image: url("../../media/imgaccueil/accueil.jpg"); /* Première image */
+  }
+  33% {
+    background-image: url("../../media/imgaccueil/accueil2.jpg"); /* Deuxième image */
+  }
+  66% {
+    background-image: url("../../media/imgaccueil/accueil2.jpg"); /* Troisième image */
+  }
+  100% {
+    background-image: url("../../media/imgaccueil/accueil.jpg"); /* Retour à la première image */
+  }
+}
+/* Créez une animation nommée 'backgroundChange' */
+
+.card_search {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  background-color: #ffffff75;
+  max-width: 1000px;
+  align-self: center;
+  width: 100%;
+  max-height: 110px;
+  height: 100%;
+  border-radius: 22px;
+  align-items: center;
+}
+
+.card_search_content {
+  width: 80%;
+  background: white;
+  height: 60%;
+  border-radius: 22px;
+  display: flex;
+  flex-direction: row;
+  /* justify-content: center; */
+  align-items: center;
+}
+.card_search button {
+  padding: 20px;
+  width: 70px;
+  height: 70px;
+  background: #ff8d69;
+  border: none;
+  border-radius: 100%;
+  box-shadow: 1px 2px grey;
+  margin: 15px;
+  color: white;
+  font-size: x-large;
+}
+
+.card_search button:hover {
+  background: #e97e5d;
+  box-shadow: 1px 1px rgb(117, 115, 115);
+}
+/*main*/
+.main_accueil h2 {
+  font-size: 4em;
+  font-family: "Chilanka", cursive;
+  font-weight: 400;
+  text-align: center;
+  height: 150px;
+}
+.destination,
+.slide,
+.team,
+.temoignage {
+  display: flex;
+  flex-direction: column;
+  height: 960px;
+}
+
+/*section : destination */
+/*.destination{
+    background: url(../../media/img/fd_destination.png);
+    background-size: cover;
+    background-position: left;
+    background-repeat: no-repeat;
+}*/
+.destination_card {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+}
+
+.card_portugal img,
+.card_italie img,
+.card_paris img {
+  width: 360px;
+  height: 482px;
+  border-radius: 22px;
+  box-shadow: 1px 2px 5px grey;
+}
+
+.card_portugal,
+.card_italie,
+.card_paris {
+  width: 360px;
+  height: 482px;
+  position: relative;
+  cursor: pointer;
+}
+
+.card_portugal::before,
+.card_italie::before,
+.card_paris::before,
+.card_portugal::after,
+.card_italie::after,
+.card_paris::after {
+  position: absolute;
+  content: "";
+  width: 20%;
+  height: 20%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 25px;
+  font-weight: bold;
+  color: white;
+  transition: all 0.5s;
+}
+.card_portugal::before,
+.card_portugal::after {
+  background-color: rgba(215, 87, 134, 0.521);
+}
+.card_italie::before,
+.card_italie::after {
+  background-color: rgba(98, 215, 87, 0.521);
+}
+.card_paris::before,
+.card_paris::after {
+  background-color: rgba(233, 181, 59, 0.694);
+}
+
+.card_portugal::before,
+.card_italie::before,
+.card_paris::before {
+  top: 0;
+  right: 0;
+  border-radius: 0 15px 0 100%;
+}
+
+.card_portugal::after,
+.card_italie::after,
+.card_paris::after {
+  bottom: 0;
+  left: 0;
+  border-radius: 0 100% 0 15px;
+}
+
+.card_portugal:hover::before,
+.card_italie:hover::before,
+.card_paris:hover::before,
+.card_portugal:hover:after,
+.card_italie:hover:after,
+.card_paris:hover:after {
+  width: 100%;
+  height: 100%;
+  border-radius: 15px;
+  transition: all 0.5s;
+}
+
+.card_portugal:hover:after {
+  content: "Portugal";
+  color: white;
+}
+
+.card_italie:hover:after {
+  content: "Italie";
+  color: white;
+}
+
+/*section : slide */
+.slide button {
+  visibility: hidden;
+}
+.slide1,
+.slide2,
+.slide3 {
+  height: 960px;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.carousel {
+  height: 100%;
+}
+
+/*section : team */
+/* .team {
+  background: url(../../media/img/fd_blob.png);
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+} */
+
+.card_team {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+}
+.card_team img {
+  width: 420px;
+  height: 420px;
+  border-radius: 100%;
+  object-fit: cover;
+  object-position: top;
+}
+
+.card_team_content {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  font-family: "Chilanka", cursive;
+}
+.card_team_content p {
+  width: 55%;
+  text-align: center;
+}
+/*section : temoignage */
+/* .temoignage {
+  background: url(../../media/img/fd_temoignage.jpg);
+  background-size: cover;
+  background-position: left;
+  background-repeat: no-repeat;
+  align-items: center;
+} */
+.temoignage h2 {
+  color: #fff;
+  text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  font-family: Cherry Bomb One;
+  font-size: 4em;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  text-transform: uppercase;
+}
+
+.card_temoignage {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background: #ffffff8c;
+  max-width: 950px;
+  width: 100%;
+  max-height: 350px;
+  height: 100%;
+  box-shadow: 1px 2px 8px #808080ad;
+}
+
+.card_temoignage p {
+  font-family: "Chilanka", cursive;
+  font-size: xx-large;
+}
+
+.card_temoignage_footer {
+  align-self: flex-end;
+  margin-right: 120px;
+}
+
+.carousel {
+  height: 100%;
+}
+.carousel img {
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
+}
+
+@media only screen and (max-width: 767px) {
+  .header {
+    height: 719px;
+  }
+  .card_search {
+    max-width: 300px;
+    max-height: 350px;
+    flex-direction: column;
+  }
+
+  .card_search_content {
+    flex-wrap: wrap;
+  }
+
+  .main_accueil h2 {
+    font-size: 2em;
+    height: 50px;
+  }
+  .destination,
+  .team,
+  .temoignage {
+    height: auto;
+  }
+  .destination_card {
+    flex-direction: row;
+    justify-content: space-evenly;
+    align-items: center;
+    overflow: auto;
+    width: 372px;
+  }
+  .slide {
+    height: 196px;
+  }
+  .card_portugal,
+  .card_italie,
+  .card_paris {
+    width: 350px;
+    height: 350px;
+    margin: 8px;
+  }
+  .card_portugal img,
+  .card_italie img,
+  .card_paris img {
+    width: 350px;
+    height: 350px;
+    object-fit: cover;
+  }
+  .card_team {
+    flex-direction: column;
+    justify-content: space-evenly;
+    overflow: auto;
+  }
+
+  .card_team img {
+    width: 220px;
+    height: 220px;
+    border-radius: 100%;
+    object-fit: cover;
+    object-position: top;
+  }
+
+  .card_temoignage p {
+    font-family: "Chilanka", cursive;
+    font-size: larger;
+    width: 75%;
+    text-align: center;
+  }
+
+  .card_temoignage {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background: #ffffff8c;
+    max-width: 250px;
+    width: 100%;
+    max-height: 150px;
+    height: 100%;
+    box-shadow: 1px 2px 8px #808080ad;
+    overflow: scroll;
+    /* margin: 20px; */
+  }
+}

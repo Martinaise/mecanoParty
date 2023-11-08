@@ -26,6 +26,7 @@ module.exports.createVehicule = async (req, res) => {
     id_user,
   } = req.body;
   // on verifie que les champps de la requettes ne sont pas vide
+  console.log(req.body);
   if (
     !reference ||
     !puissance ||
@@ -46,52 +47,57 @@ module.exports.createVehicule = async (req, res) => {
     !marque_vehicule ||
     !type_transmission ||
     !annee_fabrication_vehicule ||
-    !image ||
     !id_user
   ) {
     return res.status(404).json({
       message: "remplissez tous les champs",
     });
   }
-
-  // envois a la bdd l'horaire saissit
-  const myquery =
-    "INSERT INTO vehicule (reference, puissance ,couleur_exterieur, nombre_de_siege , conso_mixte ,type_consommation_vehicule,puissance_fiscal ,interieur ,poids,nombres_de_portes, capacite_du_coffre, lieu_de_recuperation_voiture, emission_carbonne ,prix_par_mois,prix ,kilometrage,marque_vehicule, type_transmission ,annee_fabrication_vehicule,image,id_user ) VALUES (?, ?, ?, ?,?, ?, ?, ?,?, ?, ?, ?,?, ?, ?, ?,?, ?, ?, ?,?)";
-  const values = [
-    reference,
-    puissance,
-    couleur_exterieur,
-    nombre_de_siege,
-    conso_mixte,
-    type_consommation_vehicule,
-    puissance_fiscal,
-    interieur,
-    poids,
-    nombres_de_portes,
-    capacite_du_coffre,
-    lieu_de_recuperation_voiture,
-    emission_carbonne,
-    prix_par_mois,
-    prix,
-    kilometrage,
-    marque_vehicule,
-    type_transmission,
-    annee_fabrication_vehicule,
-    image,
-    id_user,
-  ];
-
-  try {
-    const heureouverture = await db.executeQuery(myquery, values);
-    res.status(201).json({
-      message: "véhicule créé ",
-    });
-  } catch (error) {
-    console.log(error);
-    res.status(404).json({
-      message: `Votre véhicule n'est pas créé ${error}`,
+  if (req.file) {
+    const image = `http://127.0.0.1:5002/image/${req.file.filename}`; // Obtenir le chemin de l'image téléchargée.
+    const myquery =
+      "INSERT INTO vehicule (reference, puissance ,couleur_exterieur, nombre_de_siege , conso_mixte ,type_consommation_vehicule,puissance_fiscal ,interieur ,poids,nombres_de_portes, capacite_du_coffre, lieu_de_recuperation_voiture, emission_carbonne ,prix_par_mois,prix ,kilometrage,marque_vehicule, type_transmission ,annee_fabrication_vehicule,image,id_user ) VALUES (?, ?, ?, ?,?, ?, ?, ?,?, ?, ?, ?,?, ?, ?, ?,?, ?, ?, ?,?)";
+    const values = [
+      reference,
+      puissance,
+      couleur_exterieur,
+      nombre_de_siege,
+      conso_mixte,
+      type_consommation_vehicule,
+      puissance_fiscal,
+      interieur,
+      poids,
+      nombres_de_portes,
+      capacite_du_coffre,
+      lieu_de_recuperation_voiture,
+      emission_carbonne,
+      prix_par_mois,
+      prix,
+      kilometrage,
+      marque_vehicule,
+      type_transmission,
+      annee_fabrication_vehicule,
+      image,
+      id_user,
+    ];
+    try {
+      const heureouverture = await db.executeQuery(myquery, values);
+      res.status(201).json({
+        message: "véhicule créé ",
+      });
+    } catch (error) {
+      console.log(error);
+      res.status(404).json({
+        message: `Votre véhicule n'est pas créé ${error}`,
+      });
+    }
+  } else {
+    return res.status(400).json({
+      message: "téléversé une image",
     });
   }
+
+  // envois a la bdd l'horaire saissit
 };
 //fin enregistrement l'horaire d'ouverture
 

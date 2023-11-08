@@ -1,0 +1,29 @@
+.header {
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 960px;
+  z-index: -1;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center center;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  animation: backgroundChange 15s linear infinite; /* Change l'arrière-plan toutes les 15 secondes */
+}
+/* Créez une animation nommée 'backgroundChange' */
+@keyframes backgroundChange {
+  0% {
+    background-image: url("../../media/imgaccueil/accueil.jpg"); /* Première image */
+  }
+  33% {
+    background-image: url("../../media/imgaccueil/accueil2.jpg"); /* Deuxième image */
+  }
+  66% {
+    background-image: url("../../media/imgaccueil/accueil2.jpg"); /* Troisième image */
+  }
+  100% {
+    background-image: url("../../media/imgaccueil/accueil.jpg"); /* Retour à la première image */
+  }
+}

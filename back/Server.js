@@ -13,6 +13,7 @@ const employeRoutes = require("./router/EmployeRoutes.js");
 
 // on permet au front et au back de communiquer enssemble
 const cors = require("cors");
+const path = require("path");
 // initialisation de app pour utiliser les méthodes sur
 const app = express();
 
@@ -38,15 +39,16 @@ app.use(express.json());
 // code url  est utilisé pour configurer le framework Express afin de pouvoir analyser les données encodées en URL dans les requêtes HTTP. Cela vous permet d'accéder aux données de formulaire soumises dans les requêtes POST.
 
 app.use(express.urlencoded({ extended: false }));
+app.use("/image", express.static(path.join(__dirname, "public", "images")));
 
 //admin routes
 app.use("/api/admin", middleWare.checkAuth, adminRoutes);
-app.use("/api/client", middleWare.checkAuth, employeRoutes);
+app.use("/api/employe", employeRoutes);
 // use associe une route de base a un emsemble de route
 app.use("/api/user", userRoutes);
 app.use("/api/service", serviceRoutes);
 // séécurisation de la route avis avec le middleware
-app.use("/api/avis", middleWare.checkAuth, avisRoutes);
+app.use("/api/avis", avisRoutes);
 app.use("/api/horaireOuverture", horaireOuvertureRoutes);
 app.use("/api/vehicule", vehiculeRoutes);
 

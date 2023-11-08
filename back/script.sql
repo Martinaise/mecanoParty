@@ -39,7 +39,7 @@ CREATE TABLE user (
      prenom VARCHAR(255) NOT NULL,
     email VARCHAR(255) NOT NULL,
     mot_de_passe VARCHAR(255) NOT NULL,
-    role_user VARCHAR(255) NOT NULL,
+    role_user VARCHAR(255) NOT NULL DEFAULT 'client',
     id_user INT PRIMARY KEY NOT NULL AUTO_INCREMENT
 )
  
